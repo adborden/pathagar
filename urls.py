@@ -1,6 +1,7 @@
 import os
 
 from django.conf.urls.defaults import *
+from django.conf.urls.static import static
 from django.contrib import admin
 admin.autodiscover()
 
@@ -72,6 +73,9 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 )
 
+
+# Static files (css, js, images, etc.)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if BOOKS_STATICS_VIA_DJANGO:
     from django.views.static import serve
